@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: shreelakshmispsl/productcatalogue
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8020
+  name: productcatalogue
+  targetPort: 8020
+
+containers:
+  name: productcatalogue
