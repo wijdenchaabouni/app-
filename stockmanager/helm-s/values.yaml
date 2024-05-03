@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: shreelakshmispsl/stockmanager
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8030
+  name: stockmanager
+  targetPort: 8030
+
+containers:
+  name: stockmanager

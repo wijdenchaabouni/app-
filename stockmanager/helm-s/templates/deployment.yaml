@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    {{- include "helm-s.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "helm-s.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        {{- include "helm-s.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Values.containers.name }}
+          image: {{ .Values.image.repository | quote }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          name: "stockmanager"
+
+
