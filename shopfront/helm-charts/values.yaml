@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: shreelakshmispsl/shopfront
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8010
+  name: shopfront
+  targetPort: 8010
+
+containers:
+  name: shopfront
